@@ -91,13 +91,23 @@ export default {
 
 <style lang="less" scoped>
   .login{
-    background-image: url('../../assets/img/login_bg.jpg');
+    //background-image: url('../../assets/img/login_bg.jpg');
     height:100vh;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
+    &:before{
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-image: url('../../assets/img/login_bg.jpg');
+      background-size: cover;
+      filter: blur(2px)
+    }
     .login-card{
+      z-index: 2;
       width: 440px;
       height: 350px;
       .title{
