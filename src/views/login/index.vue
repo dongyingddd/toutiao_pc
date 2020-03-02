@@ -62,7 +62,23 @@ export default {
       this.$refs.loginForm.validate().then((isOK) => {
         if (isOK) {
           // 校验通过
-          console.log('校验通过')
+          this.$axios({
+            url: '/authorizations',
+            data: this.loginForm,
+            method: 'post'
+          }).then((result) => {
+            // 登录成功
+            // 把token存于本地缓存
+            window.localStorage.setItem('user-token', result.data.data.token)
+            // 编程式导航,跳转主页
+            this.$router.push('/home')
+          }).catch(() => {
+            // 登录失败
+            this.$message({
+              type: 'error',
+              message: '您的手机号或验证码有误!'
+            })
+          })
         } else {
           // 校验未通过
           console.log('校验未通过')
