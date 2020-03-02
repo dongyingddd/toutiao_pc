@@ -6,7 +6,7 @@
           <img src='../../assets/img/logo_index.png' alt="">
         </div>
         <!-- 放置表单 -->
-        <el-form :model="loginForm" :rules="loginRules">
+        <el-form ref="loginForm"  :model="loginForm" :rules="loginRules">
           <el-form-item prop="mobile">
             <el-input v-model="loginForm.mobile" placeholder="请输入手机号"></el-input>
           </el-form-item>
@@ -15,10 +15,10 @@
             <el-button plain style="float:right">发送验证码</el-button>
           </el-form-item>
           <el-form-item prop="checked">
-            <el-checkbox>我已阅读并同意用户协议和隐私条款</el-checkbox>
+            <el-checkbox v-model="loginForm.checked">我已阅读并同意用户协议和隐私条款</el-checkbox>
           </el-form-item>
           <el-form-item>
-            <el-button style="width: 100%" type="primary">登录</el-button>
+            <el-button style="width: 100%" type="primary" @click="login">登录</el-button>
           </el-form-item>
         </el-form>
       </el-card>
@@ -55,6 +55,19 @@ export default {
           }
         ]
       }
+    }
+  },
+  methods: {
+    login () {
+      this.$refs.loginForm.validate().then((isOK) => {
+        if (isOK) {
+          // 校验通过
+          console.log('校验通过')
+        } else {
+          // 校验未通过
+          console.log('校验未通过')
+        }
+      })
     }
   }
 }
