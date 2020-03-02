@@ -36,7 +36,24 @@ export default {
         checked: false // 是否同意用户协议
       },
       loginRules: {
-
+        // 手机号的验证规则
+        mobile: [
+          { required: true, message: '您的手机号不能为空' },
+          { pattern: /^1[3-9]\d{9}$/, message: '您的手机号格式不正确' }
+        ],
+        // 验证码的验证规则
+        code: [
+          { required: true, message: '验证码不能为空' },
+          { pattern: /^\d{6}$/, message: '验证码应该是6位数字' }
+        ],
+        // 是否同意用户协议的校验
+        checked: [
+          {
+            validator: function (rule, value, callback) {
+              value ? callback() : callback(new Error('您必须同意我们的霸王条款'))
+            }
+          }
+        ]
       }
     }
   }
