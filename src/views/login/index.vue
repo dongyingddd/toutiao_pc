@@ -102,11 +102,12 @@ export default {
       width: 100%;
       height: 100%;
       position: absolute;
-      background-image: url('../../assets/img/login_bg.jpg');
-      background-size: cover;
-      filter: blur(2px)
+      background-image: url('../../assets/img/login_back1.jpg');
+      background-size: 100% 100%;
+      //filter: blur(1px)
     }
     .login-card{
+      background-color: rgba(0,0,0,0);
       z-index: 2;
       width: 440px;
       height: 350px;

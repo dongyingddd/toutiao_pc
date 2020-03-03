@@ -3,15 +3,17 @@
     <!-- 外层大容器 -->
       <el-container>
         <!-- 左边容器 -->
-        <el-aside width="200px">
-          侧边栏导航
+        <el-aside style="width:230px;">
+          <layout-aside></layout-aside>
         </el-aside>
         <!-- 右侧大容器 -->
         <el-container>
           <!-- 顶部 -->
-          <el-header>顶栏容器</el-header>
+          <el-header style="padding:0">
+            <layout-header></layout-header>
+          </el-header>
           <!-- 中部区域 -->
-          <el-main>
+          <el-main style="padding:0">
             <!-- 二级路由容器 -->
             <router-view></router-view>
           </el-main>
@@ -21,6 +23,7 @@
 </template>
 
 <script>
+
 export default {
 
 }
