@@ -2,7 +2,7 @@
   <el-row class="layout-header" type="flex" align="middle">
       <el-col class="left" :span="12">
           <i class="el-icon-s-fold"></i>
-          <span>山炮传媒股份有限公司</span>
+          <span>凤凰头条股份有限公司</span>
       </el-col>
       <el-col class="right" :span="12">
           <el-row type="flex" align="middle" justify="end">
@@ -45,12 +45,8 @@ export default {
     }
   },
   created () {
-    const token = localStorage.getItem('user-token')
     this.$axios({
-      url: '/user/profile',
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+      url: '/user/profile'
     }).then(result => {
       this.userInfo = result.data.data
     })

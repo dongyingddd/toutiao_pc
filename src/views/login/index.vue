@@ -3,7 +3,7 @@
       <el-card class="login-card">
         <!-- 放置标题图片 -->
         <div class="title">
-          <img src='../../assets/img/logo_index.png' alt="">
+          <img src='../../assets/img/logo_index_fh.png' alt="">
         </div>
         <!-- 放置表单 -->
         <el-form ref="loginForm"  :model="loginForm" :rules="loginRules">
@@ -15,10 +15,10 @@
             <el-button plain style="float:right">发送验证码</el-button>
           </el-form-item>
           <el-form-item prop="checked">
-            <el-checkbox v-model="loginForm.checked">我已阅读并同意用户协议和隐私条款</el-checkbox>
+            <el-checkbox v-model="loginForm.checked" class="checked">我已阅读并同意用户协议和隐私条款</el-checkbox>
           </el-form-item>
           <el-form-item>
-            <el-button style="width: 100%" type="primary" @click="login">登录</el-button>
+            <el-button style="width: 100%" type="primary" @click="login" class="login_button">登录</el-button>
           </el-form-item>
         </el-form>
       </el-card>
@@ -102,12 +102,13 @@ export default {
       width: 100%;
       height: 100%;
       position: absolute;
-      background-image: url('../../assets/img/login_back1.jpg');
+      background-image: url('../../assets/img/bg1.jpg');
       background-size: 100% 100%;
-      //filter: blur(1px)
+       filter: blur(5px)
     }
     .login-card{
       background-color: rgba(0,0,0,0);
+      border: 1px solid #4d71c5;
       z-index: 2;
       width: 440px;
       height: 350px;
@@ -117,6 +118,14 @@ export default {
         img {
           height:45px;
         }
+      }
+      .checked{
+        color: #1f3159;
+      }
+      .login_button{
+        background-color: #e5ceee;
+        color: #1f3159;
+        border: none;
       }
     }
   }

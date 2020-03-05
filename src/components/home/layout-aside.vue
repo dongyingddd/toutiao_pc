@@ -2,10 +2,10 @@
     <div class="layout-aside">
         <!-- 头部图片 -->
         <div class="title">
-            <img src="../../assets/img/logo_admin.png" alt="">
+            <img src="../../assets/img/logo_admin_fh.png" alt="">
         </div>
         <!-- 导航菜单 -->
-        <el-menu router background-color="#353b4e" text-color="#adafb5" class="el-menu">
+        <el-menu router background-color="#041424" text-color="#fff" class="el-menu">
             <el-menu-item index='/home'>
                 <i class="el-icon-s-home"></i>
                 <span>首页</span>
@@ -46,7 +46,9 @@ export default {
 
 <style  lang="less" scoped>
     .layout-aside{
-        background-color: #323745;
+        //background-color: #e7e6f6;
+        background-image: url('../../assets/img/bg2.gif');
+        background-size: cover;
         width: 230px;
         height: 100vh;
         .title{
