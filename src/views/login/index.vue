@@ -69,7 +69,7 @@ export default {
           }).then((result) => {
             // 登录成功
             // 把token存于本地缓存
-            window.localStorage.setItem('user-token', result.data.data.token)
+            window.localStorage.setItem('user-token', result.data.token)
             // 编程式导航,跳转主页
             this.$router.push('/home')
           }).catch(() => {

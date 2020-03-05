@@ -22,4 +22,15 @@ axios.interceptors.request.use(function (config) {
   return Promise.reject(error)
 })
 
+// 配置响应拦截器
+// 统一处理响应数据
+axios.interceptors.response.use(function (response) {
+  // 成功的时候执行
+  // 回调函数的第一个参数是响应体
+  // 在拦截器中将响应体数据进行解构,然后返回
+  return response.data ? response.data : {} // 有的接口 没有任何的响应数据
+}, function () {
+  // 失败的时候执行
+})
+
 export default axios
