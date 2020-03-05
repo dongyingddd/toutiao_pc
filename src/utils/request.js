@@ -4,6 +4,7 @@
  * 配置拦截器以及其他
  ****/
 import axios from 'axios'
+import router from '@/router'
 
 // 配置公共的请求头地址
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0'
@@ -29,8 +30,19 @@ axios.interceptors.response.use(function (response) {
   // 回调函数的第一个参数是响应体
   // 在拦截器中将响应体数据进行解构,然后返回
   return response.data ? response.data : {} // 有的接口 没有任何的响应数据
-}, function () {
+}, function (error) {
   // 失败的时候执行
+  // 401 钥匙过期/钥匙名不对/拿错钥匙....
+  // 应该换一把新钥匙
+  if (error.response.status === 401) {
+    // 删除钥匙
+    localStorage.removeItem('user-token')
+    // 跳回登录页,重新登录,拿一把新钥匙
+    router.push('/login')
+  }
+  // 进行错误处理
+  // 所有的axios调用依然会进入到catch中
+  return Promise.reject(error)
 })
 
 export default axios
