@@ -1,7 +1,5 @@
 <template>
-  <bread-crumb>
-   <span slot="title">评论管理</span>
-  </bread-crumb>
+  <div></div>
 </template>
 
 <script>
