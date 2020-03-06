@@ -21,7 +21,8 @@
 export default {
   data () {
     return {
-      activeName: 'all'
+      activeName: 'all',
+      list: []
     }
   }
 }
