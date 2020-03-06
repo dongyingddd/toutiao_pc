@@ -1,5 +1,5 @@
 <template>
-    <el-card>
+  <el-card >
         <!-- 放置一个面包屑组件 -->
         <bread-crumb slot="header">
             <span slot="title">评论管理</span>
@@ -58,13 +58,14 @@ export default {
     // 打开或关闭评论
     openOrClose (row) {
       const mess = row.comment_status ? '关闭' : '打开'
+      console.log('参数', JSON.stringify(row.id))
       this.$confirm(`您确定${mess}评论吗?`, '提示')
         .then(() => {
           this.$axios({
             url: '/comments/status',
             // query参数
             params: {
-              article_id: row.id // 要求参数的文章id
+              article_id: row.id.toString() // 要求参数的文章id 将BigNumber类型转化为字符串
             },
             // body参数
             data: {
@@ -76,7 +77,8 @@ export default {
             this.$message.success(`${mess}评论成功!`)
             // 然后重新拉取数据
             this.getList()
-          }).catch(() => {
+          }).catch((res) => {
+            console.log('错误', res)
             // 失败了会进入到catch
             this.$message.error(`${mess}评论失败!`)
           })
@@ -90,6 +92,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less" scoped>
 
 </style>

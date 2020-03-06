@@ -47,7 +47,7 @@ export default {
 <style  lang="less" scoped>
     .layout-aside{
         //background-color: #e7e6f6;
-        background-image: url('../../assets/img/bg2.gif');
+        background-image: url('../../assets/img/bg3.gif');
         background-size: cover;
         width: 230px;
         height: 100vh;

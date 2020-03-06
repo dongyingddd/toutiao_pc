@@ -7,7 +7,7 @@
           <layout-aside></layout-aside>
         </el-aside>
         <!-- 右侧大容器 -->
-        <el-container>
+        <el-container class="right">
           <!-- 顶部 -->
           <el-header style="padding:0">
             <layout-header></layout-header>
@@ -29,6 +29,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="less" scoped>
+  .right{
+    height: 100vh;
+    overflow: auto;
+  }
 </style>
