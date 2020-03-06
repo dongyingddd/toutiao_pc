@@ -21,6 +21,14 @@
                </template>
             </el-table-column>
         </el-table>
+        <el-row type="flex" style="height: 80px;" justify="center" align="center">
+           <el-pagination background  layout="prev, pager, next"
+           :total="page.total"
+           :current-page="page.currentPage"
+           :page-size="page.pageSize"
+           @current-change="changePage">
+           </el-pagination>
+        </el-row>
     </el-card>
 
 </template>
@@ -29,6 +37,15 @@
 export default {
   data () {
     return {
+      // 封装分页数据
+      page: {
+        // 总条数
+        total: 0,
+        // 当前页
+        currentPage: 1,
+        // 每页显示条数
+        pageSize: 10
+      },
       list: []
     }
   },
@@ -38,11 +55,14 @@ export default {
       this.$axios({
         url: '/articles',
         params: {
-          response_type: 'comment'
+          response_type: 'comment',
+          page: this.page.currentPage, // 当前页码
+          per_page: this.page.pageSize // 每页显示条数
         },
         method: 'GET'
       }).then((result) => {
         this.list = result.data.results
+        this.page.total = result.data.total_count
       })
     },
     // 过滤评论状态
@@ -83,6 +103,11 @@ export default {
             this.$message.error(`${mess}评论失败!`)
           })
         })
+    },
+    // 当前页码改变时触发的一个函数
+    changePage (newPage) {
+      this.page.currentPage = newPage
+      this.getList()
     }
   },
   created () {
