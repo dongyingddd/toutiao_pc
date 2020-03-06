@@ -53,7 +53,7 @@ export default {
   methods: {
     // 加载评论数据
     getList () {
-      this.loading = true
+      this.loading = true // 打开遮罩层
       this.$axios({
         url: '/articles',
         params: {
@@ -65,7 +65,7 @@ export default {
       }).then((result) => {
         this.list = result.data.results
         this.page.total = result.data.total_count
-        this.loading = false
+        this.loading = false // 请求完毕 关闭遮罩层
       })
     },
     // 过滤评论状态
