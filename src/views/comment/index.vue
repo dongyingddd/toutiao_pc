@@ -1,5 +1,5 @@
 <template>
-  <el-card >
+  <el-card v-loading="loading">
         <!-- 放置一个面包屑组件 -->
         <bread-crumb slot="header">
             <span slot="title">评论管理</span>
@@ -46,12 +46,14 @@ export default {
         // 每页显示条数
         pageSize: 10
       },
-      list: []
+      list: [],
+      loading: false // 控制loading遮罩层的显示或隐藏
     }
   },
   methods: {
     // 加载评论数据
     getList () {
+      this.loading = true
       this.$axios({
         url: '/articles',
         params: {
@@ -63,6 +65,7 @@ export default {
       }).then((result) => {
         this.list = result.data.results
         this.page.total = result.data.total_count
+        this.loading = false
       })
     },
     // 过滤评论状态
